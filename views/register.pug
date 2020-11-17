@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h3=title
+  <form action="https://example.com/" method="POST">
+    <div>
+      <p>First Name:</p>
+      <input type="text" name="firstname" id="first" placeholder="John">
+    </div>
+    <div>
+      <p>Last Name:</p>
+      <input type="text" name="lastname" id="last" placeholder="Doe">
+    </div>
+    <div>
+      <p>Email:</p>
+      <input type="text" name="email" id="email" placeholder="john.doe@gmail.com">
+    </div>
+    <div>
+      <p>Username:</p>
+      <input type="text" name="username" id="username" placeholder="Username">
+    </div>
+    <div>
+      <p>Password:</p>
+      <input type="password" name="password" id="password" placeholder="Password">
+    </div>
+    <div>
+      <p>Confirm Password:</p>
+      <input type="password" name="passwordconfirm" id="passwordconfirm" placeholder="Password">
+    </div>
+    <div>
+      <p>Security Question:</p>
+      //THIS SHOULD ACTUALLY BE A DROPDOWN !!!!FIX ME!!!!!
+      <input type="text" name="securityquestion" id="securityquestion" placeholder="What is your favorite food?">
+    </div>
+    <div>
+      <p>Answer:</p>
+      <input type="text" name="securityanswer" id="securityanswer" placeholder="Skinny Cow">
+    </div>
+    <br>
+    <input class="button" type="submit" value="Sign Up Now">
