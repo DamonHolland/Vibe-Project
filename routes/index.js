@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-const validateRegistration = require('../public/javascripts/validateRegistration');
 
 const validator = require('../public/javascripts/validateRegistration');
 
@@ -16,7 +15,7 @@ router.get('/register', function(req, res, next) {
 });
 
 /* Handle Registration */
-router.post('/', function(req, res) {
+router.post('/register', function(req, res) {
   const NO_ERRORS = "";
   //NEEDS CHANGED. Just set their uid to 10 for now. Not sure how we want to handle this.
   let uid = 10;

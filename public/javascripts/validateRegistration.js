@@ -1,6 +1,7 @@
 function validateRegistration(first_name, last_name, username, password, passwordconfirm, email){
   const STRING_MIN = 1;
   const STRING_MAX = 25;
+  //A Regular expression to check the format of entered email against
   const EMAIL_FORMAT = /\S+@\S+\.\S+/;
 
   const ERROR_FNAME_MIN = "First name is too short.";
