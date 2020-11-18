@@ -15,7 +15,7 @@ var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://cluster0.qrok4.mongodb.net/vibe';
+var mongoDB = 'mongodb+srv://VibeAdmin:vBh24T76GHlTomHG@cluster0.qrok4.mongodb.net/vibe';
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
