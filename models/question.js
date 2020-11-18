@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var QuestionSchema = new Schema(
   {
     voteCount: {type: Int, required: true, default: 0},
-    creationDate: {type: Date, required: true},
+    creationDate: {type: Date, required: true, default: Date.now},
     author: {type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true}
   }
 );
