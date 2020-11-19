@@ -1,8 +1,10 @@
 function validateRegistration(firstName, lastName, username, password, passwordconfirm, email){
   const STRING_MIN = 1;
-  const STRING_MAX = 25;
-  //A Regular expression to check the format of entered email against
+  const PASSWORD_MIN = 8;
+  const STRING_MAX = 30;
+  //Regular expressions to check the formatting of user input
   const EMAIL_FORMAT = /\S+@\S+\.\S+/;
+  const PASSWORD_FORMAT = /\S*(\S*([a-zA-Z]\S*[0-9])|([0-9]\S*[a-zA-Z]))\S*/;
 
   const ERROR_FNAME_MIN = "First name is too short.";
   const ERROR_FNAME_MAX = "First name is too long.";
@@ -12,6 +14,7 @@ function validateRegistration(firstName, lastName, username, password, passwordc
   const ERROR_USERNAME_MAX = "Name is too short.";
   const ERROR_PASSWORD_MIN = "Password is too short.";
   const ERROR_PASSWORD_MAX = "Password is too long.";
+  const ERROR_PASSWORD_FORMAT = "Passsword must contain at least one letter, one number, and no spaces.";
   const ERROR_PASSWORD_MATCH = "Passswords do not match.";
   const ERROR_EMAIL_FORMAT = "Invalid Email."
 
@@ -42,11 +45,14 @@ function validateRegistration(firstName, lastName, username, password, passwordc
   }
 
   //Validate Password
-  if (password.length < STRING_MIN) {
+  if (password.length < PASSWORD_MIN) {
     error_message = error_message.concat("\n" + ERROR_PASSWORD_MIN);
   }
   else if (password.length > STRING_MAX) {
     error_message = error_message.concat("\n" + ERROR_PASSWORD_MAX);
+  }
+  else if (!PASSWORD_FORMAT.test(password)) {
+    error_message = error_message.concat("\n" + ERROR_PASSWORD_FORMAT);
   }
   else if (password != passwordconfirm) {
     error_message = error_message.concat("\n" + ERROR_PASSWORD_MATCH);
