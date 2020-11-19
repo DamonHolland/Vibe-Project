@@ -2,4 +2,20 @@ extends layout
 
 block content
   h3=title
+  <form action="https://example.com/" method="POST">
+    <div >
+      <p class="questionBox"> Which one is better?</p>
+    </div>
+
+    <div>
+      <input type="checkbox" name="firstOption" class="firstOption" value="checked">
+      <label for="firstOption">Pizza</label><br>
+    </div>
+      <input type="checkbox" name="secondOption" class="secondOption" value="checked">
+      <label for="secondOption">Burger</label><br>
+    <div>
+    </div>
+    <input id="skipButton" type="submit" value="Skip">
+    <input class="submitButton" type="submit" value="Submit">
+  </form>
   
