@@ -2,3 +2,18 @@ extends layout
 
 block content
   h3=title
+  <form action="https://example.com/" method="POST">
+    <div>
+      <input type="text" name="questionBox" class="questionBox" placeholder="Enter your question">
+    </div>
+
+    <div>
+      <input type="text" name="firstOption" class="firstOption" placeholder="Enter Option 1">
+    </div>
+
+    <div>
+      <input type="text" name="secondOption" class="secondOption" placeholder="Enter Option 2">
+    </div>
+    <input class="submitButton" type="submit" value="Submit">
+    <input id="cancelButton" type="submit" value="Cancel">
+  </form>

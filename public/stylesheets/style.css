@@ -49,6 +49,45 @@ header {
   border-radius: 8px;
 }
 
+.submitButton {
+  font-size: 24px;
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  margin: 4px 20px;
+  border-radius: 8px;
+}
+
+#cancelButton {
+  font-size: 24px;
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  margin: 4px 20px;
+  border-radius: 8px;
+}
+
+#skipButton {
+  font-size: 24px;
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  margin: 4px 20px;
+  border-radius: 8px;
+}
+
 form input {
   font-size: 24px;
   margin: 4px 21px;
@@ -56,4 +95,11 @@ form input {
 
 h3 {
   margin: 10px;
+}
+
+.questionBox {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black ;
+  text-align: center;
 }
