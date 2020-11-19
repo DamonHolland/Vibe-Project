@@ -1,4 +1,4 @@
-function validateRegistration(first_name, last_name, username, password, passwordconfirm, email){
+function validateRegistration(firstName, lastName, username, password, passwordconfirm, email){
   const STRING_MIN = 1;
   const STRING_MAX = 25;
   //A Regular expression to check the format of entered email against
@@ -18,18 +18,18 @@ function validateRegistration(first_name, last_name, username, password, passwor
   let error_message = "";
 
   //Validate First Name
-  if (first_name.length < STRING_MIN) {
+  if (firstName.length < STRING_MIN) {
     error_message = error_message.concat("\n" + ERROR_FNAME_MIN);
   }
-  else if (first_name.length > STRING_MAX) {
+  else if (firstName.length > STRING_MAX) {
     error_message = error_message.concat("\n" + ERROR_FNAME_MAX);
   }
 
   //Validate Last Name
-  if (last_name.length < STRING_MIN) {
+  if (lastName.length < STRING_MIN) {
     error_message = error_message.concat("\n" + ERROR_LNAME_MIN);
   }
-  else if (last_name.length > STRING_MAX) {
+  else if (lastName.length > STRING_MAX) {
     error_message = error_message.concat("\n" + ERROR_LNAME_MAX);
   }
 
