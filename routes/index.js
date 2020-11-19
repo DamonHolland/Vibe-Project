@@ -17,22 +17,19 @@ router.get('/register', function(req, res, next) {
 /* Handle Registration */
 router.post('/register', function(req, res) {
   const NO_ERRORS = "";
-  //NEEDS CHANGED. Just set their uid to 10 for now. Not sure how we want to handle this.
-  let uid = 10;
-  let first_name = req.body.firstname;
-  let last_name = req.body.lastname;
+  let firstName = req.body.firstname;
+  let lastName = req.body.lastname;
   let username = req.body.username;
   let password = req.body.password;
   let passwordconfirm = req.body.passwordconfirm;
   let email = req.body.email;
   
-  let error_message = validator.validateRegistration(first_name, last_name, username, password, passwordconfirm, email);
+  let error_message = validator.validateRegistration(firstName, lastName, username, password, passwordconfirm, email);
 
   if (NO_ERRORS == error_message) {
     let newUser = new User();
-    newUser.uid = uid;
-    newUser.first_name = first_name;
-    newUser.last_name = last_name;
+    newUser.firstName = firstName;
+    newUser.lastName = lastName;
     newUser.username = username;
     newUser.password = password;
     newUser.email = email;
