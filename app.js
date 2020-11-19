@@ -4,15 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var signInRouter = require('./routes/signIn');
-var registerRouter = require('./routes/register');
-var updateRouter = require('./routes/update');
+var mainRouter = require('./routes/main');
+var addQuestionRouter = require('./routes/addQuestion');
+var resultsRouter = require('./routes/results');
+var indexRouter = require('./routes/index');
+//var registerRouter = require('./routes/register');
+//var updateRouter = require('./routes/update');
 
 var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://cluster0.qrok4.mongodb.net/vibe';
+var mongoDB = 'mongodb+srv://VibeAdmin:vBh24T76GHlTomHG@cluster0.qrok4.mongodb.net/vibe';
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -27,9 +30,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', signInRouter);
-app.use('/register', registerRouter);
-app.use('/update', updateRouter);
+app.use('/main', mainRouter);
+app.use('/question', addQuestionRouter);
+app.use('/results', resultsRouter);
+app.use('/', indexRouter);
+app.use('/register', indexRouter);
+app.use('/update', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

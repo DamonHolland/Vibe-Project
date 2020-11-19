@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET update account page. */
+/* GET registration page. */
 router.get('/', function(req, res, next) {
-  res.render('update', { title: 'Update Account' });
+  res.render('main');
 });
 
 module.exports = router;

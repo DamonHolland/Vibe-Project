@@ -1,8 +1,9 @@
 extends layout
 
 block content
+
   h3=title
-  <form action="https://example.com/" method="POST">
+  <form method="POST">
     <div>
       <p>First Name:</p>
       <input type="text" name="firstname" id="first" placeholder="John">
@@ -36,5 +37,5 @@ block content
       <p>Answer:</p>
       <input type="text" name="securityanswer" id="securityanswer" placeholder="Skinny Cow">
     </div>
-    <br>
+    pre=errorbox
     <input class="button" type="submit" value="Sign Up Now">

@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET registration page. */
 router.get('/', function(req, res, next) {
-  res.render('register', { title: 'Register' });
+  res.render('addQuestion');
 });
 
 module.exports = router;
