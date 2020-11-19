@@ -1,12 +1,33 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var mongoose = require('mongoose');
 
-const validator = require('../public/javascripts/validateRegistration');
+const register = require('../public/javascripts/validateRegistration');
 
 /* GET sign in page. */
 router.get('/', function(req, res, next) {
   res.render('signIn', { title: 'Sign in' });
+});
+
+/* Handle Sign-in */
+router.post('/', function(req, res) {
+  const ERROR_LOGIN = "Invalid username or password";
+  let username = req.body.username;
+  let password = req.body.password;
+
+  User.findOne({username: username, password: password}, function(err, user) {
+    if (err) {
+      console.log(err);
+    }
+    else if (!user){
+      res.render('signIn', {title: 'Sign In',  errorbox: ERROR_LOGIN });
+    }
+    else{
+      res.render('main');
+    }
+  });
+
 });
 
 /* GET registration page. */
@@ -24,7 +45,7 @@ router.post('/register', function(req, res) {
   let passwordconfirm = req.body.passwordconfirm;
   let email = req.body.email;
   
-  let error_message = validator.validateRegistration(firstName, lastName, username, password, passwordconfirm, email);
+  let error_message = register.validateRegistration(firstName, lastName, username, password, passwordconfirm, email);
 
   if (NO_ERRORS == error_message) {
     let newUser = new User();
@@ -37,18 +58,14 @@ router.post('/register', function(req, res) {
     newUser.save(function(error, savedUser) {
       if(error) {
         console.log(error);
-        return res.status(500).send();
       }
       else {
         res.render('signIn', { title: 'Sign in' });
-        return res.status(200).send();
       }
     })
   }
   else {
     res.render('register', {title: 'Register',  errorbox: error_message });
-    console.log(error_message);
-    return res.status(200).send();
   }
 
   

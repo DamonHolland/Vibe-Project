@@ -19,7 +19,7 @@ function validateRegistration(firstName, lastName, username, password, passwordc
 
   //Validate First Name
   if (firstName.length < STRING_MIN) {
-    error_message = error_message.concat("\n" + ERROR_FNAME_MIN);
+    error_message = error_message.concat(ERROR_FNAME_MIN);
   }
   else if (firstName.length > STRING_MAX) {
     error_message = error_message.concat("\n" + ERROR_FNAME_MAX);

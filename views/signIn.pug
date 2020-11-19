@@ -3,7 +3,7 @@ extends layout
 block content
 
   h3=title
-  <form action="/login" method="POST">
+  <form method="POST">
     <div>
       <p>Username:</p>
       <input type="text" name="username" id="username" placeholder="Username">
@@ -16,6 +16,7 @@ block content
       <input type="checkbox" name="rememberme" id="rememberme" value="checked">
       <label for="rememberme">Remember me</label>
     </div>
+    pre=errorbox
     <input class="button" type="submit" value="Sign In">
   </form>
   <hr>
