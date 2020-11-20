@@ -54,6 +54,7 @@ router.post('/register', function(req, res) {
   let passwordconfirm = req.body.passwordconfirm;
   let email = req.body.email;
   let error_message = "";
+
   
   User.findOne({username: username}, function(err, user) {
     if (err) {
@@ -82,7 +83,14 @@ router.post('/register', function(req, res) {
       })
     }
     else {
-      res.render('register', {title: 'Register',  errorbox: error_message });
+      res.render('register', {
+        title: 'Register',
+        first: firstName,
+        last: lastName,
+        email: email,
+        user: username,
+        errorbox: error_message
+      });
     }
   });
 });
