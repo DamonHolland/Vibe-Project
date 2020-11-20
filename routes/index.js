@@ -47,6 +47,8 @@ router.post('/', function(req, res) {
 router.post('/register', function(req, res) {
   const NO_ERRORS = "";
   const ERROR_USERNAME_TAKEN = "The username is taken.";
+  const ERROR_FIELD_CLASS = "errorInput";
+
   let firstName = req.body.firstname;
   let lastName = req.body.lastname;
   let username = req.body.username;
@@ -54,6 +56,13 @@ router.post('/register', function(req, res) {
   let passwordconfirm = req.body.passwordconfirm;
   let email = req.body.email;
   let error_message = "";
+
+  let firstInputField = "";
+  let lastInputField = "";
+  let userInputField = "";
+  let passInputField = "";
+  let emailInputField = "";
+
   
   User.findOne({username: username}, function(err, user) {
     if (err) {
@@ -62,8 +71,33 @@ router.post('/register', function(req, res) {
     else if (user){
       error_message = error_message.concat(ERROR_USERNAME_TAKEN + "\n");
     }
+    
+    if (register.validateFirstName(firstName)) {
+      error_message = error_message.concat(register.validateFirstName(firstName) + "\n");
+      firstName = "";
+      firstInputField = "errorInput";
+    }
+    if (register.validateLastName(lastName)) {
+      error_message = error_message.concat(register.validateLastName(lastName) + "\n");
+      lastName = "";
+      lastInputField = "errorInput";
+    }
+    if (register.validateUsername(username)) {
+      error_message = error_message.concat(register.validateUsername(username) + "\n");
+      username = "";
+      userInputField = "errorInput";
+    }
+    if (register.validatePassword(password, passwordconfirm)) {
+      error_message = error_message.concat(register.validatePassword(password, passwordconfirm) + "\n");
+      passInputField = "errorInput";
+    }
+    if (register.validateEmail(email)) {
+      error_message = error_message.concat(register.validateEmail(email) + "\n");
+      email = "";
+      emailInputField = "errorInput";
+    }
 
-    error_message = error_message.concat(register.validateRegistration(firstName, lastName, username, password, passwordconfirm, email));
+    
     if (NO_ERRORS == error_message) {
       let newUser = new User();
       newUser.firstName = firstName;
@@ -82,7 +116,19 @@ router.post('/register', function(req, res) {
       })
     }
     else {
-      res.render('register', {title: 'Register',  errorbox: error_message });
+      res.render('register', {
+        title: 'Register',
+        first: firstName,
+        last: lastName,
+        email: email,
+        user: username,
+        firstField: firstInputField,
+        lastField: lastInputField,
+        userField: userInputField,
+        emailField: emailInputField,
+        passField: passInputField,
+        errorbox: error_message
+      });
     }
   });
 });
