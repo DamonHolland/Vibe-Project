@@ -10,26 +10,6 @@ var AnswerSchema = new Schema(
   }
 );
 
-// Virtual for user
-AnswerSchema
-.virtual('user')
-.get(function () {
-  return this.user;
-});
-
-// Virtual for question
-AnswerSchema
-.virtual('question')
-.get(function () {
-  return this.question;
-});
-
-// Virtual for date
-AnswerSchema
-.virtual('date')
-.get(function () {
-  return this.date;
-});
 
 //Export model
 module.exports = mongoose.model('Answer', AnswerSchema);
