@@ -63,8 +63,28 @@ router.post('/register', function(req, res) {
     else if (user){
       error_message = error_message.concat(ERROR_USERNAME_TAKEN + "\n");
     }
+    
+    if (register.validateFirstName(firstName)) {
+      error_message = error_message.concat(register.validateFirstName(firstName) + "\n");
+      firstName = "";
+    }
+    if (register.validateLastName(lastName)) {
+      error_message = error_message.concat(register.validateLastName(lastName) + "\n");
+      lastName = "";
+    }
+    if (register.validateUsername(username)) {
+      error_message = error_message.concat(register.validateUsername(username) + "\n");
+      username = "";
+    }
+    if (register.validatePassword(password, passwordconfirm)) {
+      error_message = error_message.concat(register.validatePassword(password, passwordconfirm) + "\n");
+    }
+    if (register.validateEmail(email)) {
+      error_message = error_message.concat(register.validateEmail(email) + "\n");
+      email = "";
+    }
 
-    error_message = error_message.concat(register.validateRegistration(firstName, lastName, username, password, passwordconfirm, email));
+    
     if (NO_ERRORS == error_message) {
       let newUser = new User();
       newUser.firstName = firstName;
