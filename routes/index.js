@@ -47,6 +47,8 @@ router.post('/', function(req, res) {
 router.post('/register', function(req, res) {
   const NO_ERRORS = "";
   const ERROR_USERNAME_TAKEN = "The username is taken.";
+  const ERROR_FIELD_CLASS = "errorInput";
+
   let firstName = req.body.firstname;
   let lastName = req.body.lastname;
   let username = req.body.username;
@@ -54,6 +56,12 @@ router.post('/register', function(req, res) {
   let passwordconfirm = req.body.passwordconfirm;
   let email = req.body.email;
   let error_message = "";
+
+  let firstInputField = "";
+  let lastInputField = "";
+  let userInputField = "";
+  let passInputField = "";
+  let emailInputField = "";
 
   
   User.findOne({username: username}, function(err, user) {
@@ -67,21 +75,26 @@ router.post('/register', function(req, res) {
     if (register.validateFirstName(firstName)) {
       error_message = error_message.concat(register.validateFirstName(firstName) + "\n");
       firstName = "";
+      firstInputField = "errorInput";
     }
     if (register.validateLastName(lastName)) {
       error_message = error_message.concat(register.validateLastName(lastName) + "\n");
       lastName = "";
+      lastInputField = "errorInput";
     }
     if (register.validateUsername(username)) {
       error_message = error_message.concat(register.validateUsername(username) + "\n");
       username = "";
+      userInputField = "errorInput";
     }
     if (register.validatePassword(password, passwordconfirm)) {
       error_message = error_message.concat(register.validatePassword(password, passwordconfirm) + "\n");
+      passInputField = "errorInput";
     }
     if (register.validateEmail(email)) {
       error_message = error_message.concat(register.validateEmail(email) + "\n");
       email = "";
+      emailInputField = "errorInput";
     }
 
     
@@ -109,6 +122,11 @@ router.post('/register', function(req, res) {
         last: lastName,
         email: email,
         user: username,
+        firstField: firstInputField,
+        lastField: lastInputField,
+        userField: userInputField,
+        emailField: emailInputField,
+        passField: passInputField,
         errorbox: error_message
       });
     }
