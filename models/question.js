@@ -10,26 +10,5 @@ var QuestionSchema = new Schema(
   }
 );
 
-// Virtual for voteCount
-QuestionSchema
-.virtual('voteCount')
-.get(function () {
-  return this.voteCount;
-});
-
-// Virtual for creationDate
-QuestionSchema
-.virtual('creationDate')
-.get(function () {
-  return this.creationDate;
-});
-
-// Virtual for author
-QuestionSchema
-.virtual('author')
-.get(function () {
-  return this.author;
-});
-
 //Export model
 module.exports = mongoose.model('Question', QuestionSchema);
