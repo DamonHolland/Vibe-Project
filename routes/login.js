@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var mongoose = require('mongoose');
+const encryptor = require('bcrypt');
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
@@ -14,7 +15,7 @@ router.post('/', function(req, res) {
   let username = req.body.username;
   let password = req.body.password;
 
-  User.findOne({username: username, password: password}, function(err, user) {
+  User.findOne({username: username}, function(err, user) {
     if (err) {
       console.log(err);
     }
@@ -22,8 +23,18 @@ router.post('/', function(req, res) {
       res.render('signIn', {title: 'Sign In',  errorbox: ERROR_LOGIN });
     }
     else{
-      req.session.user = user;
-      res.redirect('/');
+      encryptor.compare(password, user.toObject().password, function(err, result){
+        if (err) {
+          console.log(err);
+        }
+        else if (result){
+          req.session.user = user;
+          res.redirect('/');
+        }
+        else {
+          res.render('signIn', {title: 'Sign In',  errorbox: ERROR_LOGIN });
+        }
+      });
     }
   });
 });
