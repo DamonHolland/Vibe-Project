@@ -1,14 +1,3 @@
-function validateRegistration(firstName, lastName, username, password, passwordConfirm, email){
-  const STRING_MIN = 1;
-  const STRING_MAX = 30;
-  //Regular expressions to check the formatting of user input
-  
-
-  let error_message = "";
-
-  return error_message;
-};
-
 function validateFirstName(firstName) {
   const FIRST_NAME_MIN = 1;
   const FIRST_NAME_MAX = 30;
