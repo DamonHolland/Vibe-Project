@@ -5,8 +5,18 @@ var mongoose = require('mongoose');
 
 const register = require('../public/javascripts/validateRegistration');
 
-/* GET sign in page. */
+/* GET home page. */
 router.get('/', function(req, res, next) {
+  if (!req.session.user){
+    res.redirect('/login');
+  }
+  else{
+    res.render('main');
+  }
+});
+
+/* GET login page. */
+router.get('/login', function(req, res, next) {
   res.render('signIn', { title: 'Sign in' });
 });
 
@@ -23,7 +33,7 @@ router.get('/update', function(req, res, next) {
 
 
 /* Handle Sign-in */
-router.post('/', function(req, res) {
+router.post('/login', function(req, res) {
   const ERROR_LOGIN = "Invalid username or password";
   let username = req.body.username;
   let password = req.body.password;
@@ -36,9 +46,8 @@ router.post('/', function(req, res) {
       res.render('signIn', {title: 'Sign In',  errorbox: ERROR_LOGIN });
     }
     else{
-      res.render('main');
-      //Need to change to res.redirect('/main'), but want to find out what we
-      //want to name routes first
+      req.session.user = user;
+      res.redirect('/');
     }
   });
 });
@@ -111,7 +120,7 @@ router.post('/register', function(req, res) {
           console.log(error);
         }
         else {
-          res.redirect('/');
+          res.redirect('/login');
         }
       })
     }
