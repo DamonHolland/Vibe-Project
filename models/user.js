@@ -4,9 +4,8 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema(
   {
-    uid: {type: Number, required: true},
-    first_name: {type: String, required: true, maxlength: 25},
-    last_name: {type: String, required: true, maxlength: 25},
+    firstName: {type: String, required: true, maxlength: 25},
+    lastName: {type: String, required: true, maxlength: 25},
     username: {type: String, required: true, unique: true, maxlength: 25},
     password: {type: String, required: true, maxlength: 25},
     email: {type: String, required: true, maxlength: 25},
@@ -15,11 +14,11 @@ var UserSchema = new Schema(
   }
 );
 
-// Virtual for name
+// Virtual for full name
 UserSchema
-.virtual('name')
+.virtual('fullName')
 .get(function () {
-  return this.fName + " ", + this.lName;
+  return this.firstName + " ", + this.lastName;
 });
 
 //Export model
