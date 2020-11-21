@@ -79,6 +79,7 @@ router.post('/register', function(req, res) {
     }
     else if (user){
       error_message = error_message.concat(ERROR_USERNAME_TAKEN + "\n");
+      username = "";
     }
     
     if (register.validateFirstName(firstName)) {
