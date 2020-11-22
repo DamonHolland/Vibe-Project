@@ -2,11 +2,23 @@ doctype html
 html
   head
     title= title
+    meta(name='viewport' content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/hamburgerMenu.js')
   body
     <header>
       <div class='title'>VIBE</div>
-      //Note that this is just a placeholder for an actual hamburger icon
-      <div id='hamburger'>Hamburger</div>
+      <div class='hamburger' onclick=clickedHamburger(this)>
+        <div id='hamburger1'></div>
+        <div id='hamburger2'></div>
+        <div id='hamburger3'></div>
+      </div>
     </header>
+    <div class='menu'>
+      <a href='/'>Home</a>
+      <a href="../addQuestion">Add Question</a>
+      <a href="../update">Update Account</a>
+      //FIGURE OUT HOW TO HANDLE SIGN OUT??
+      <a href="#">Sign Out</a>
+    </div>
     block content

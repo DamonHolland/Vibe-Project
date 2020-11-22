@@ -1,14 +1,3 @@
-function validateRegistration(firstName, lastName, username, password, passwordConfirm, email){
-  const STRING_MIN = 1;
-  const STRING_MAX = 30;
-  //Regular expressions to check the formatting of user input
-  
-
-  let error_message = "";
-
-  return error_message;
-};
-
 function validateFirstName(firstName) {
   const FIRST_NAME_MIN = 1;
   const FIRST_NAME_MAX = 30;
@@ -104,10 +93,29 @@ function validateEmail(email) {
   return error_message;
 }
 
+function validateSecurityAnswer(answer) {
+  const ANSWER_MIN = 1;
+  const ANSWER_MAX = 30;
+  const ERROR_ANSWER_MIN = "You must answer a security question.";
+  const ERROR_ANSWER_MAX = "Security answer too long.";
+
+  let error_message = 0;
+
+  if (answer.length < ANSWER_MIN) {
+    error_message = ERROR_ANSWER_MIN;
+  }
+  else if (answer.length > ANSWER_MAX) {
+    error_message = ERROR_ANSWER_MAX;
+  }
+
+  return error_message;
+}
+
 module.exports = { 
   validateFirstName,
   validateLastName,
   validateUsername,
   validatePassword,
-  validateEmail
+  validateEmail,
+  validateSecurityAnswer
 }

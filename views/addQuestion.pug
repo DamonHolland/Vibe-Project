@@ -2,18 +2,17 @@ extends layout
 
 block content
   h3=title
-  <form action="https://example.com/" method="POST">
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  <form method="POST">
     <div>
-      <input type="text" name="questionBox" class="questionBox" placeholder="Enter your question">
+      input(class="questionBox", type="text", name="questionBox", id="questionBox" placeholder="Enter your question", value=question)
     </div>
 
     <div>
-      <input type="text" name="firstOption" class="firstOption" placeholder="Enter Option 1">
+      input(class="firstOption", type="text", name="firstOption", id="firstOption", placeholder="Enter Option 1", value=firstOption)
+      input(class="secondOption", type="text", name="secondOption", id="secondOption", placeholder="Enter Option 2", value=secondOption)
     </div>
-
-    <div>
-      <input type="text" name="secondOption" class="secondOption" placeholder="Enter Option 2">
-    </div>
-    <input class="submitButton" type="submit" value="Submit">
-    <input id="cancelButton" type="submit" value="Cancel">
+    input(class="submitButton", type="submit", value="Submit")
+    input(id="cancelButton", type="submit", value="Cancel")
   </form>
