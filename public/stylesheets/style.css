@@ -12,6 +12,15 @@ p {
   margin: 5px 20px;
 }
 
+label {
+  margin: 5px 20px;
+}
+
+select {
+  font-size: 24px;
+  margin: 4px 21px;
+}
+
 pre {
   margin: 5px 20px;
   font-size: large;

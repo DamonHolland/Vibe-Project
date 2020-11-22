@@ -24,6 +24,8 @@ router.post('/', function(req, res) {
   let password = req.body.password;
   let passwordconfirm = req.body.passwordconfirm;
   let email = req.body.email;
+  let securityQuestion = req.body.question;
+  let securityAnswer = req.body.securityanswer;
   let error_message = "";
 
   let firstInputField = "";
@@ -31,8 +33,8 @@ router.post('/', function(req, res) {
   let userInputField = "";
   let passInputField = "";
   let emailInputField = "";
+  let answerInputField = "";
 
-  
   User.findOne({username: username}, function(err, user) {
     if (err) {
       console.log(err);
@@ -40,6 +42,13 @@ router.post('/', function(req, res) {
     else if (user){
       error_message = error_message.concat(ERROR_USERNAME_TAKEN + "\n");
       username = "";
+    }
+    else {
+      if (register.validateUsername(username)) {
+        error_message = error_message.concat(register.validateUsername(username) + "\n");
+        username = "";
+        userInputField = ERROR_FIELD_CLASS;
+      }
     }
     
     if (register.validateFirstName(firstName)) {
@@ -52,11 +61,6 @@ router.post('/', function(req, res) {
       lastName = "";
       lastInputField = ERROR_FIELD_CLASS;
     }
-    if (register.validateUsername(username)) {
-      error_message = error_message.concat(register.validateUsername(username) + "\n");
-      username = "";
-      userInputField = ERROR_FIELD_CLASS;
-    }
     if (register.validatePassword(password, passwordconfirm)) {
       error_message = error_message.concat(register.validatePassword(password, passwordconfirm) + "\n");
       passInputField = ERROR_FIELD_CLASS;
@@ -66,6 +70,11 @@ router.post('/', function(req, res) {
       email = "";
       emailInputField = ERROR_FIELD_CLASS;
     }
+    if (register.validateSecurityAnswer(securityAnswer)) {
+      error_message = error_message.concat(register.validateSecurityAnswer(securityAnswer) + "\n");
+      securityAnswer = "";
+      answerInputField = ERROR_FIELD_CLASS;
+    }
 
     
     if (NO_ERRORS == error_message) {
@@ -74,19 +83,30 @@ router.post('/', function(req, res) {
       newUser.lastName = lastName;
       newUser.username = username;
       newUser.email = email;
+      newUser.securityQuestion = securityQuestion;
+      newUser.securityAnswer = securityAnswer;
 
-      encryptor.hash(password, HASHING_ROUNDS, function (err, hash){
+      encryptor.hash(password, HASHING_ROUNDS, function (err, hashPass){
         if (err) {
           console.log(err);
         }
         else {
-          newUser.password = hash;
-          newUser.save(function(error, savedUser) {
-            if(error) {
-              console.log(error);
+          encryptor.hash(securityAnswer, HASHING_ROUNDS, function (err, hashAnswer){
+            if (err) {
+              console.log(err);
             }
             else {
-              res.redirect('/login');
+              newUser.password = hashPass;
+              newUser.securityAnswer = hashAnswer;
+              newUser.save(function(error, savedUser) {
+              if(error) {
+                console.log(error);
+              }
+              else {
+                res.redirect('/login');
+              }
+          });
+
             }
           });
         }
@@ -104,6 +124,7 @@ router.post('/', function(req, res) {
         userField: userInputField,
         emailField: emailInputField,
         passField: passInputField,
+        answerField: answerInputField,
         errorbox: error_message
       });
     }

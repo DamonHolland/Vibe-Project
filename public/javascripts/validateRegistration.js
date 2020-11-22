@@ -93,10 +93,29 @@ function validateEmail(email) {
   return error_message;
 }
 
+function validateSecurityAnswer(answer) {
+  const ANSWER_MIN = 1;
+  const ANSWER_MAX = 30;
+  const ERROR_ANSWER_MIN = "You must answer a security question.";
+  const ERROR_ANSWER_MAX = "Security answer too long.";
+
+  let error_message = 0;
+
+  if (answer.length < ANSWER_MIN) {
+    error_message = ERROR_ANSWER_MIN;
+  }
+  else if (answer.length > ANSWER_MAX) {
+    error_message = ERROR_ANSWER_MAX;
+  }
+
+  return error_message;
+}
+
 module.exports = { 
   validateFirstName,
   validateLastName,
   validateUsername,
   validatePassword,
-  validateEmail
+  validateEmail,
+  validateSecurityAnswer
 }
