@@ -2,20 +2,21 @@ extends layout
 
 block content
   h3=title
-  <form action="https://example.com/" method="POST">
-    <div >
-      <p class="questionBox"> Which one is better?</p>
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  <form method="POST">
+    <div class="questionBox" id="display">
+      <p> Which one is better?</p>
     </div>
 
     <div>
-      <input type="checkbox" name="firstOption" class="firstOption" value="checked">
-      <label for="firstOption">Pizza</label><br>
+      input(class="firstOption", type="radio", name="firstOption", id="showFirstOption", value=pickedFristOption)
+      <label for="firstOption", class="optionBox">Pizza</label><br>
+
+      input(class="secondOption", type="radio", name="secondOption", id="showSecondOption", value=pickedSecondOption)
+      <label for="secondOption", class="optionBox">Burger</label><br>
     </div>
-      <input type="checkbox" name="secondOption" class="secondOption" value="checked">
-      <label for="secondOption">Burger</label><br>
-    <div>
-    </div>
-    <input id="skipButton" type="submit" value="Skip">
-    <input class="submitButton" type="submit" value="Submit">
+    input(id="skipButton", type="submit", value="Skip")
+    input(class="submitButton", type="submit", value="Submit")
   </form>
   
