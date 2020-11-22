@@ -3,7 +3,12 @@ var router = express.Router();
 
 /* GET update account page. */
 router.get('/', function(req, res, next) {
-  res.render('update', { title: 'Update Account' });
+  if (!req.session.user){
+    res.redirect('../login');
+  }
+  else{
+    res.render('update', { title: 'Update Account' });
+  }
 });
 
 module.exports = router;
