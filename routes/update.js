@@ -18,4 +18,9 @@ router.get('/', function(req, res, next) {
   }
 });
 
+/* Handle Updating of account info */
+router.post('/', function(req, res, next) {
+  res.redirect('../');
+});
+
 module.exports = router;

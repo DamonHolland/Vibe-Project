@@ -11,4 +11,10 @@ router.get('/', function(req, res, next) {
   }
 });
 
+/* Handle Vote */
+router.post('/', function(req, res, next) {
+  //Do the vote handling stuff here
+  res.redirect('../');
+});
+
 module.exports = router;
