@@ -6,7 +6,12 @@ const encryptor = require('bcrypt');
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
-  res.render('signIn', { title: 'Sign in' });
+  if (req.session.user){
+    res.redirect('/');
+  }
+  else{
+    res.render('signIn', { title: 'Sign in' });
+  }
 });
 
 /* Handle login */

@@ -7,8 +7,20 @@ router.get('/', function(req, res, next) {
     res.redirect('../login');
   }
   else{
-    res.render('update', { title: 'Update Account' });
+    console.log();
+    res.render('update', {
+      title: 'Update Account',
+      first: req.session.user.firstName,
+      last: req.session.user.lastName,
+      email: req.session.user.email,
+      user: req.session.user.username
+    });
   }
+});
+
+/* Handle Updating of account info */
+router.post('/', function(req, res, next) {
+  res.redirect('../');
 });
 
 module.exports = router;
