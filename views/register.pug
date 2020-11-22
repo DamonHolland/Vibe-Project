@@ -1,4 +1,4 @@
-extends layout
+extends layoutNoHamburger
 
 block content
 
@@ -30,7 +30,6 @@ block content
     </div>
     <div>
       <p>Security Question:</p>
-      //THIS SHOULD ACTUALLY BE A DROPDOWN !!!!FIX ME!!!!!
       input(type="text", name="securityquestion", id="securityquestion", placeholder="What is your favorite food?")
     </div>
     <div>
@@ -39,3 +38,6 @@ block content
     </div>
     pre=errorbox
     input(class="button", type="submit", value="Sign Up Now")
+    <div>
+      <button class="button" type="button" onclick=window.history.back()>Cancel</button>
+    </div>
