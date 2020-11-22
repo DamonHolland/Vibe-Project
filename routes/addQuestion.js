@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET registration page. */
+/* GET add Question page. */
 router.get('/', function(req, res, next) {
-  res.render('addQuestion');
+  if (!req.session.user){
+    res.redirect('../login');
+  }
+  else{
+    res.render('addQuestion');
+  }
 });
 
 module.exports = router;

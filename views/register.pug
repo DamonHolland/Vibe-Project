@@ -29,12 +29,17 @@ block content
       input(class=passField, type="password", name="passwordconfirm", id="passwordconfirm", placeholder="Password")
     </div>
     <div>
-      <p>Security Question:</p>
-      input(type="text", name="securityquestion", id="securityquestion", placeholder="What is your favorite food?")
+      <label for="question">Select a Security Question</label><br>
+      <select id="question", name="question">
+        <option value="0" selected>What is your mother's maiden name?</option>
+        <option value="1">What is the name of your first pet?</option>
+        <option value="2">What was your first car?</option>
+        <option value="3">What elementary school did you attend?</option>
+      </select>
     </div>
     <div>
       <p>Answer:</p>
-      input(type="text", name="securityanswer", id="securityanswer", placeholder="Skinny Cow")
+      input(class=answerField, type="text", name="securityanswer", id="securityanswer", placeholder="Answer")
     </div>
     pre=errorbox
     input(class="button", type="submit", value="Sign Up Now")

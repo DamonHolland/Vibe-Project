@@ -11,4 +11,9 @@ router.get('/', function(req, res, next) {
   }
 });
 
+/* Submit Answer */
+router.post('/', function(req, res, next) {
+    res.redirect('results');
+});
+
 module.exports = router;
