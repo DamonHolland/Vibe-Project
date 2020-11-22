@@ -2,3 +2,20 @@ extends layout
 
 block content
   h3=title
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  <form method="POST">
+    <div class="graphWrapper">
+      <div id="firstResults">
+        <b>50% - Pizza</b>
+      </div>
+      <div id="secondResults">
+        <b>50% - Burger</b>
+      </div>
+    </div>
+    <div id="resultsQuestion">
+      <p> Was this a good question? </p>
+    </div>
+    input(type="image", name="thumbsUp", src="../public/img/thumbsUp.png", alt="Thumbs Up", value=thumbsUp)
+    input(type="image", name="thumbsDown" src="../public/img/thumbsDown.png", alt="Thumbs Down", value=thumbsDown)
+  </form>
