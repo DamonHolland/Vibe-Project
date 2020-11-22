@@ -2,61 +2,21 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var mongoose = require('mongoose');
+const encryptor = require('bcrypt');
 
 const register = require('../public/javascripts/validateRegistration');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  if (!req.session.user){
-    res.redirect('/login');
-  }
-  else{
-    res.render('main');
-  }
-});
-
-/* GET login page. */
-router.get('/login', function(req, res, next) {
-  res.render('signIn', { title: 'Sign in' });
-});
-
 /* GET registration page. */
-router.get('/register', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('register', { title: 'Register' });
 });
 
-/* GET update account page. */
-router.get('/update', function(req, res, next) {
-  res.render('update', { title: 'Update Account' });
-});
-
-
-
-/* Handle Sign-in */
-router.post('/login', function(req, res) {
-  const ERROR_LOGIN = "Invalid username or password";
-  let username = req.body.username;
-  let password = req.body.password;
-
-  User.findOne({username: username, password: password}, function(err, user) {
-    if (err) {
-      console.log(err);
-    }
-    else if (!user){
-      res.render('signIn', {title: 'Sign In',  errorbox: ERROR_LOGIN });
-    }
-    else{
-      req.session.user = user;
-      res.redirect('/');
-    }
-  });
-});
-
 /* Handle Registration */
-router.post('/register', function(req, res) {
+router.post('/', function(req, res) {
   const NO_ERRORS = "";
   const ERROR_USERNAME_TAKEN = "The username is taken.";
   const ERROR_FIELD_CLASS = "errorInput";
+  const HASHING_ROUNDS = 5;
 
   let firstName = req.body.firstname;
   let lastName = req.body.lastname;
@@ -79,31 +39,32 @@ router.post('/register', function(req, res) {
     }
     else if (user){
       error_message = error_message.concat(ERROR_USERNAME_TAKEN + "\n");
+      username = "";
     }
     
     if (register.validateFirstName(firstName)) {
       error_message = error_message.concat(register.validateFirstName(firstName) + "\n");
       firstName = "";
-      firstInputField = "errorInput";
+      firstInputField = ERROR_FIELD_CLASS;
     }
     if (register.validateLastName(lastName)) {
       error_message = error_message.concat(register.validateLastName(lastName) + "\n");
       lastName = "";
-      lastInputField = "errorInput";
+      lastInputField = ERROR_FIELD_CLASS;
     }
     if (register.validateUsername(username)) {
       error_message = error_message.concat(register.validateUsername(username) + "\n");
       username = "";
-      userInputField = "errorInput";
+      userInputField = ERROR_FIELD_CLASS;
     }
     if (register.validatePassword(password, passwordconfirm)) {
       error_message = error_message.concat(register.validatePassword(password, passwordconfirm) + "\n");
-      passInputField = "errorInput";
+      passInputField = ERROR_FIELD_CLASS;
     }
     if (register.validateEmail(email)) {
       error_message = error_message.concat(register.validateEmail(email) + "\n");
       email = "";
-      emailInputField = "errorInput";
+      emailInputField = ERROR_FIELD_CLASS;
     }
 
     
@@ -112,17 +73,24 @@ router.post('/register', function(req, res) {
       newUser.firstName = firstName;
       newUser.lastName = lastName;
       newUser.username = username;
-      newUser.password = password;
       newUser.email = email;
-      
-      newUser.save(function(error, savedUser) {
-        if(error) {
-          console.log(error);
+
+      encryptor.hash(password, HASHING_ROUNDS, function (err, hash){
+        if (err) {
+          console.log(err);
         }
         else {
-          res.redirect('/login');
+          newUser.password = hash;
+          newUser.save(function(error, savedUser) {
+            if(error) {
+              console.log(error);
+            }
+            else {
+              res.redirect('/login');
+            }
+          });
         }
-      })
+      });
     }
     else {
       res.render('register', {
