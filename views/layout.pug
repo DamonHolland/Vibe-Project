@@ -4,7 +4,7 @@ html
     title= title
     meta(name='viewport' content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='/javascripts/hamburgerMenu.js')
+    
   body
     <header>
       <div class='title'>VIBE</div>
@@ -14,12 +14,12 @@ html
           <div id='hamburger2'></div>
           <div id='hamburger3'></div>
         </div>
-        <a href='/'>Home</a>
-        <a href="../addQuestion">Add Question</a>
-        <a href="../update">Update Account</a>
+        <a id='home' class='current' href='/'>Home</a>
+        <a id='addQuestion' href="../addQuestion">Add Question</a>
+        <a id='update' href="../update">Update Account</a>
         <a href="../logout">Sign Out</a>
       </div>
     </header>
-
+    script(src='/javascripts/hamburgerMenu.js')
     
     block content

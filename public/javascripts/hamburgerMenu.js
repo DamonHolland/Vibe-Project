@@ -13,7 +13,12 @@ function showMenu () {
   }
 }
 
-function changeCurrentPage (clicked) {
+(function updateCurrentPage () {
+  const URL_START = 'http://localhost:3000/';
+  const HOME = 'home';
+  const UPDATE = 'update';
+  const ADD_QUESTION = 'addQuestion';
+  let currentPage = window.location.href;
   let home = document.getElementById('home');
   let update = document.getElementById('update');
   let addQuestion = document.getElementById('addQuestion');
@@ -22,7 +27,14 @@ function changeCurrentPage (clicked) {
   update.classList.remove('current');
   addQuestion.classList.remove('current');
 
-  console.log(clicked.id);
-  clicked.classList.add('current');
-  console.log(clicked.classList);
-}
+  if (URL_START + HOME === currentPage || URL_START === currentPage) {
+    home.classList.add('current');
+  }
+  else if (URL_START + UPDATE === currentPage) {
+    update.classList.add('current');
+  }
+  else if (URL_START + ADD_QUESTION === currentPage) {
+    addQuestion.classList.add('current');
+  }
+  console.log(currentPage);
+}());
