@@ -1,4 +1,4 @@
-extends layout
+extends layoutNoHamburger
 
 block content
 
@@ -43,3 +43,6 @@ block content
     </div>
     pre=errorbox
     input(class="button", type="submit", value="Sign Up Now")
+    <div>
+      <button class="button" type="button" onclick=window.history.back()>Cancel</button>
+    </div>

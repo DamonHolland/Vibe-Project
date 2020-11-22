@@ -35,8 +35,32 @@ header {
   background-color: #55e7a8;
 }
 
-#hamburger {
+.hamburger {
   text-align: right;
+}
+
+#hamburger1, #hamburger2, #hamburger3 {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.select #hamburger1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+  transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.select #hamburger2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.select #hamburger3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+  transform: rotate(45deg) translate(-8px, -8px) ;
 }
 
 .title {
