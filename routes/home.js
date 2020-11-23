@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Question = require('../models/question')
+var Question = require('../models/question');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
         console.log(err);
       }
       else {
+        req.session.qid = questions[0]._id;
         res.render('main', {
           theQuestion: questions[0].theQuestion,
           option1: questions[0].option1,

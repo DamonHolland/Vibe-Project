@@ -26,10 +26,10 @@ router.post('/', function(req, res, next) {
       console.log (err);
     }
     else if (!user) {
-      res.redirect('/login')
+      res.redirect('/login');
     }
     else {
-      Question.insertMany({theQuestion: questionBox, option1: firstOption, option2: secondOption, author: user._id})
+      Question.create({theQuestion: questionBox, option1: firstOption, option2: secondOption, author: user._id});
     }
   });
   res.redirect('/');

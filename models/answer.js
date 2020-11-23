@@ -6,6 +6,7 @@ var AnswerSchema = new Schema(
   {
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     question: {type: Schema.Types.ObjectId, ref: 'Question', required: true, unique: true},
+    answer: {type: Number, required: true},
     date: {type: Date, default: Date.now}
   }
 );

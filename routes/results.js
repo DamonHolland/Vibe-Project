@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
     res.redirect('../login');
   }
   else{
+    console.log(req.session.qid);
     res.render('results');
   }
 });
