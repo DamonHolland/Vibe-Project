@@ -8,12 +8,20 @@ router.get('/', function(req, res, next) {
     res.redirect('/login');
   }
   else{
-    var questions = Question.find({$query: {}, $orderby: {voteCount: -1}});
+    var query = Question.find({$query: {}, $orderby: {voteCount: -1}});
 
-    res.render('main', {
-      theQuestion: questions[0].theQuestion,
-      option1: questions[0].option1,
-      option2: questions[0].option2
+    query.exec(function(err, questions) {
+      if(err)
+      {
+        console.log(err);
+      }
+      else {
+        res.render('main', {
+          theQuestion: questions[0].theQuestion,
+          option1: questions[0].option1,
+          option2: questions[0].option2
+        });
+      }
     });
   }
 });

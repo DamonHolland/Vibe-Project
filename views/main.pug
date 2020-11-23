@@ -5,15 +5,15 @@ block content
   meta(charset='utf-8')
   <form method="POST">
     <div class="questionBox" id="display">
-      <p> Which one is better?</p>
+      <p>#{theQuestion}</p>
     </div>
 
     <div>
       input(class="firstOption", type="radio", name="firstOption", id="showFirstOption", value=pickedFristOption)
-      <label for="firstOption", class="optionBox">Pizza</label><br>
+      <label for="firstOption", class="optionBox">#{option1}</label><br>
 
       input(class="secondOption", type="radio", name="secondOption", id="showSecondOption", value=pickedSecondOption)
-      <label for="secondOption", class="optionBox">Burger</label><br>
+      <label for="secondOption", class="optionBox">#{option2}</label><br>
     </div>
     input(id="skipButton", type="submit", value="Skip")
     input(class="submitButton", type="submit", value="Submit")
