@@ -289,7 +289,7 @@ router.post('/username', function(req, res, next) {
     if (err) {
       console.log(err);
     }
-    else if (user){
+    else if (user && username != req.session.user.username){
       errorMessage = ERROR_USERNAME_TAKEN;
       res.render('update', {
         title: 'Update Account',
