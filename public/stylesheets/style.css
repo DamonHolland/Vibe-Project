@@ -34,9 +34,30 @@ header {
   margin: 0px;
   background-color: #55e7a8;
 }
-
-.hamburger {
+.menu {
   text-align: right;
+  overflow: hidden;
+}
+
+.menu a {
+  color: grey;
+  float: right;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 10px;
+}
+
+.menu a:hover {
+  color: white;
+}
+
+.menu a.current {
+  color: black;
+}
+
+.menu #hamburger {
+  display: none;
 }
 
 #hamburger1, #hamburger2, #hamburger3 {
@@ -52,15 +73,38 @@ header {
   transform: rotate(-45deg) translate(-9px, 6px) ;
 }
 
-/* Fade out the second bar */
 .select #hamburger2 {
   opacity: 0;
 }
 
-/* Rotate last bar */
 .select #hamburger3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
   transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+/* Small screen: don't show horizontal menu, show hamburger*/
+@media screen and (max-width: 650px) {
+  .menu a {
+    display: none;
+  }
+  .menu #hamburger {
+    float: right;
+    display: block;
+  }
+}
+
+/* Small screen: show menu and hamburger*/
+@media screen and (max-width: 650px) {
+  .menu.show {
+    position: relative;
+  }
+
+  .menu.show a {
+    float: none;
+    display: block;
+    text-align: left;
+    font-size: 24px;
+  }
 }
 
 .title {
@@ -80,6 +124,20 @@ header {
   text-align: center;
   margin: 4px 20px;
   border-radius: 8px;
+}
+
+.button:hover {
+  background-color: #55e7a8;
+}
+
+label {
+  font-size: 24px;
+  margin: 5px 20px;
+}
+
+select {
+  font-size: 16px;
+  margin: 4px 21px;
 }
 
 .submitButton {
