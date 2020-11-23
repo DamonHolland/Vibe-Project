@@ -127,6 +127,28 @@ router.get('/username', function(req, res, next) {
   }
 });
 
+/* GET update password page. */
+router.get('/password', function(req, res, next) {
+  if (!req.session.user){
+    res.redirect('../login');
+  }
+  else{
+    console.log();
+    res.render('updatepassword');
+  }
+});
+
+/* GET update security question page. */
+router.get('/security', function(req, res, next) {
+  if (!req.session.user){
+    res.redirect('../login');
+  }
+  else{
+    console.log();
+    res.render('updatesecurity');
+  }
+});
+
 /* Handle Updating of first name */
 router.post('/firstName', function(req, res, next) {
   const FIELD_LABEL_SAVE = "Save";
