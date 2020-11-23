@@ -3,46 +3,32 @@ extends layout
 block content
 
   h3=title
-  <form method="POST">
+  <form method="POST" id="updateForm">
     <div>
       <p>First Name:</p>
-      input(class=firstField, type="text", name="firstname", id="first", placeholder="John", value=first)
+      input(class=firstField, type="text", name="firstname", id="first", placeholder="John", value=first, disabled=firstFieldDisabled)
+      span(class="editField", onclick=submitFirst||"location.href='/update/firstName'") #{firstFieldLabel||"Edit"}
     </div>
     <div>
       <p>Last Name:</p>
-      input(class=lastField, type="text", name="lastname", id="last", placeholder="Doe", value=last)
+      input(class=lastField, type="text", name="lastname", id="last", placeholder="Doe", value=last, disabled=lastFieldDisabled)
+      span(class="editField", onclick=submitLast||"location.href='/update/lastName'") #{lastFieldLabel||"Edit"}
     </div>
     <div>
       <p>Email:</p>
-      input(class=emailField, type="text", name="email", id="email", placeholder="john.doe@gmail.com", value=email)
+      input(class=emailField, type="text", name="email", id="email", placeholder="john.doe@gmail.com", value=email, disabled=emailFieldDisabled)
+      span(class="editField", onclick=submitEmail||"location.href='/update/email'") #{emailFieldLabel||"Edit"}
     </div>
     <div>
       <p>Username:</p>
-      input(class=userField, type="text", name="username", id="username", placeholder="Username", value=user)
+      input(class=userField, type="text", name="username", id="username", placeholder="Username", value=user, disabled=userFieldDisabled)
+      span(class="editField", onclick=submitUser||"location.href='/update/username'") #{userFieldLabel||"Edit"}
     </div>
     <div>
-      <p>Password:</p>
-      input(class=passField, type="password", name="password", id="password", placeholder="Password")
-    </div>
-    <div>
-      <p>Confirm Password:</p>
-      input(class=passField, type="password", name="passwordconfirm", id="passwordconfirm", placeholder="Password")
-    </div>
-    <div>
-      <label for="question">Select a Security Question</label><br>
-      <select id="question", name="question">
-        <option value="0" selected>What is your mother's maiden name?</option>
-        <option value="1">What is the name of your first pet?</option>
-        <option value="2">What was your first car?</option>
-        <option value="3">What elementary school did you attend?</option>
-      </select>
-    </div>
-    <div>
-      <p>Answer:</p>
-      input(type="text", name="securityanswer", id="securityanswer", placeholder="Skinny Cow")
-    </div>
     pre=errorbox
-    input(class="button", type="submit", value="Sign Up Now")
     <div>
-      <button class="button" type="button" onclick=window.history.back()>Cancel</button>
+      //Make these buttons look different
+      <button class="button" type="button" onclick="location.href='/update/password'">Change Password</button> <br>
+      <button class="button" type="button" onclick="location.href='/update/security'">Change Security</button> <br>
+      <button class="button" type="button" onclick="location.href='/'">Return</button>
     </div>

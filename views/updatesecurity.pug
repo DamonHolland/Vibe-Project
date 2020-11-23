@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  h3=title
+  <form method="POST" id="updateForm">
+    <div>
+      <label for="question">Select a Security Question</label><br>
+      <select id="question", name="question">
+        <option value="0" selected>What is your mother's maiden name?</option>
+        <option value="1">What is the name of your first pet?</option>
+        <option value="2">What was your first car?</option>
+        <option value="3">What elementary school did you attend?</option>
+      </select>
+    </div>
+    <div>
+      <p>Answer:</p>
+      input(class=answerField, type="text", name="securityanswer", id="securityanswer", placeholder="Answer")
+    </div>
+    <div>
+    pre=errorbox
+    <div>
+      <button class="button" type="button" onclick="location.href='/update'">Confirm</button> <br>
+      <button class="button" type="button" onclick="location.href='/update'">Return</button>
+    </div>

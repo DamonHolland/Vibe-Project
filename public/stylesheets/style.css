@@ -265,3 +265,9 @@ h3 {
   width: 100px;
   justify-content: center;
 }
+
+.editField {
+  font-size: small;
+  color: blue;
+  cursor: pointer;
+}
