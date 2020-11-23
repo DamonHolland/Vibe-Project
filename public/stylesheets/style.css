@@ -220,6 +220,14 @@ h3 {
   align-items: center;
 }
 
+label.optionBox {
+  display: inline-block;
+  margin: 5px auto;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
 #display.questionBox {
   display: flex;
   padding: 10px;
