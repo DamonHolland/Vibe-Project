@@ -98,15 +98,14 @@ router.post('/', function(req, res) {
             else {
               newUser.password = hashPass;
               newUser.securityAnswer = hashAnswer;
-              newUser.save(function(error, savedUser) {
-              if(error) {
-                console.log(error);
-              }
-              else {
-                res.redirect('/login');
-              }
-          });
-
+              newUser.save(function(error) {
+                if(error) {
+                 console.log(error);
+                }
+                else {
+                  res.redirect('/login');
+                }
+              });
             }
           });
         }

@@ -3,6 +3,7 @@ const session = require('express-session');
 var router = express.Router();
 var User = require('../models/user');
 const register = require('../public/javascripts/validateRegistration');
+const encryptor = require('bcrypt');
 
 /* GET update account page. */
 router.get('/', function(req, res, next) {
@@ -344,6 +345,95 @@ router.post('/username', function(req, res, next) {
       });
     }
   });
+});
+
+/* Handle Updating of password*/
+router.post('/password', function(req, res, next) {
+  const HASHING_ROUNDS = 5;
+  const ERROR_CURRENT_PASS = "Incorrect current password.";
+
+  let errorMessage = register.validatePassword(req.body.newpassword, req.body.newpasswordconfirm);
+
+  User.findOne({username: req.session.user.username}, function(err, user) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      encryptor.compare(req.body.currentpassword, user.toObject().password, function(err, result){
+        if (err) {
+          console.log(err);
+        }
+        else if (result){
+          if (errorMessage) {
+            res.render('updatepassword', {errorbox: errorMessage});
+          }
+          else {
+            encryptor.hash(req.body.newpassword, HASHING_ROUNDS, function (err, hashPass){
+              if (err) {
+                console.log(err);
+              }
+              else {
+                user.password = hashPass;
+                user.save(function(error) {
+                  if(error) {
+                    console.log(error);
+                  }
+                  else {
+                    req.session.user = null;
+                    res.redirect('/login');
+                  }
+                });
+              }
+            });
+          }
+        }
+        else {
+          res.render('updatepassword', {errorbox: ERROR_CURRENT_PASS});
+        }
+      });
+
+
+    }
+  });
+  
+});
+
+/* Handle Updating of security question*/
+router.post('/security', function(req, res, next) {
+  const HASHING_ROUNDS = 5;
+  let errorMessage = register.validateSecurityAnswer(req.body.securityanswer);
+
+  if (errorMessage) {
+    res.render('updatesecurity', {errorbox: errorMessage});
+  }
+  else {
+    User.findOne({username: req.session.user.username}, function(err, user) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        encryptor.hash(req.body.securityanswer, HASHING_ROUNDS, function (err, hashAnswer){
+          if (err) {
+            console.log(err);
+          }
+          else {
+            user.securityQuestion = req.body.question;
+            user.securityAnswer = hashAnswer;
+            user.save(function(error) {
+              if(error) {
+               console.log(error);
+              }
+              else {
+                req.session.user = user;
+                res.redirect('/update');
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+
 });
 
 module.exports = router;
