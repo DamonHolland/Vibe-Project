@@ -3,7 +3,7 @@ extends layout
 block content
 
   h3=title
-  <form method="POST">
+  <form method="POST" id="updateForm">
     <div>
       <p>First Name:</p>
       input(class=firstField, type="text", name="firstname", id="first", placeholder="John", value=first, disabled=firstFieldDisabled)
@@ -27,5 +27,5 @@ block content
     <div>
     pre=errorbox
     <div>
-      <button class="button" type="button" onclick=window.history.back()>Cancel</button>
+      <button class="button" type="button" onclick="location.href='/update'">Cancel</button>
     </div>
