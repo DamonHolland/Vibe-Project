@@ -3,9 +3,6 @@ var router = express.Router();
 
 /* GET update account page. */
 router.get('/', function(req, res, next) {
-  const FIELD_LABEL_EDIT = "Edit";
-
-
   if (!req.session.user){
     res.redirect('../login');
   }
@@ -20,18 +17,13 @@ router.get('/', function(req, res, next) {
       firstFieldDisabled: true,
       lastFieldDisabled: true,
       emailFieldDisabled: true,
-      userFieldDisabled: true,
-      firstFieldLabel: FIELD_LABEL_EDIT,
-      lastFieldLabel: FIELD_LABEL_EDIT,
-      emailFieldLabel: FIELD_LABEL_EDIT,
-      userFieldLabel: FIELD_LABEL_EDIT,
+      userFieldDisabled: true
     });
   }
 });
 
 /* GET update first name page. */
 router.get('/firstName', function(req, res, next) {
-  const FIELD_LABEL_EDIT = "Edit";
   const FIELD_LABEL_SAVE = "Save";
 
 
@@ -50,10 +42,7 @@ router.get('/firstName', function(req, res, next) {
       lastFieldDisabled: true,
       emailFieldDisabled: true,
       userFieldDisabled: true,
-      firstFieldLabel: FIELD_LABEL_SAVE,
-      lastFieldLabel: FIELD_LABEL_EDIT,
-      emailFieldLabel: FIELD_LABEL_EDIT,
-      userFieldLabel: FIELD_LABEL_EDIT,
+      firstFieldLabel: FIELD_LABEL_SAVE
     });
   }
 });
@@ -79,10 +68,7 @@ router.get('/lastName', function(req, res, next) {
       lastFieldDisabled: false,
       emailFieldDisabled: true,
       userFieldDisabled: true,
-      firstFieldLabel: FIELD_LABEL_EDIT,
       lastFieldLabel: FIELD_LABEL_SAVE,
-      emailFieldLabel: FIELD_LABEL_EDIT,
-      userFieldLabel: FIELD_LABEL_EDIT,
     });
   }
 });
@@ -108,10 +94,7 @@ router.get('/email', function(req, res, next) {
       lastFieldDisabled: true,
       emailFieldDisabled: false,
       userFieldDisabled: true,
-      firstFieldLabel: FIELD_LABEL_EDIT,
-      lastFieldLabel: FIELD_LABEL_EDIT,
       emailFieldLabel: FIELD_LABEL_SAVE,
-      userFieldLabel: FIELD_LABEL_EDIT,
     });
   }
 });
@@ -137,9 +120,6 @@ router.get('/username', function(req, res, next) {
       lastFieldDisabled: true,
       emailFieldDisabled: true,
       userFieldDisabled: false,
-      firstFieldLabel: FIELD_LABEL_EDIT,
-      lastFieldLabel: FIELD_LABEL_EDIT,
-      emailFieldLabel: FIELD_LABEL_EDIT,
       userFieldLabel: FIELD_LABEL_SAVE,
     });
   }

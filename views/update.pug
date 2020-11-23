@@ -7,22 +7,22 @@ block content
     <div>
       <p>First Name:</p>
       input(class=firstField, type="text", name="firstname", id="first", placeholder="John", value=first, disabled=firstFieldDisabled)
-      span(class="editField", onclick="location.href='/update/firstName'") #{firstFieldLabel}
+      span(class="editField", onclick=submitFirst||"location.href='/update/firstName'") #{firstFieldLabel||"Edit"}
     </div>
     <div>
       <p>Last Name:</p>
       input(class=lastField, type="text", name="lastname", id="last", placeholder="Doe", value=last, disabled=lastFieldDisabled)
-      span(class="editField", onclick="location.href='/update/lastName'") #{lastFieldLabel}
+      span(class="editField", onclick=submitLast||"location.href='/update/lastName'") #{lastFieldLabel||"Edit"}
     </div>
     <div>
       <p>Email:</p>
       input(class=emailField, type="text", name="email", id="email", placeholder="john.doe@gmail.com", value=email, disabled=emailFieldDisabled)
-      span(class="editField", onclick="location.href='/update/email'") #{emailFieldLabel}
+      span(class="editField", onclick=submitEmail||"location.href='/update/email'") #{emailFieldLabel||"Edit"}
     </div>
     <div>
       <p>Username:</p>
       input(class=userField, type="text", name="username", id="username", placeholder="Username", value=user, disabled=userFieldDisabled)
-      span(class="editField", onclick="location.href='/update/username'") #{userFieldLabel}
+      span(class="editField", onclick=submitUser||"location.href='/update/username'") #{userFieldLabel||"Edit"}
     </div>
     <div>
     pre=errorbox
