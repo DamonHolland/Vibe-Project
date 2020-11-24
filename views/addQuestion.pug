@@ -13,6 +13,8 @@ block content
       input(class="firstOption", type="text", name="firstOption", id="firstOption", placeholder="Enter Option 1", value=firstOption)
       input(class="secondOption", type="text", name="secondOption", id="secondOption", placeholder="Enter Option 2", value=secondOption)
     </div>
-    input(class="submitButton", type="submit", value="Submit")
-    button(id="cancelButton", type="button", onclick="location.href='/'") Cancel
+    <div class="centerButtons">
+      input(class="submitButton", id="addQuestion", type="submit", value="Submit")
+      button(class="button", id="cancel", type="button", onclick="location.href='/'") Cancel
+    </div>
   </form>

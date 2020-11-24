@@ -5,17 +5,20 @@ block content
   meta(charset='utf-8')
   <form method="POST">
     <div class="questionBox" id="display">
-      <p>#{theQuestion}</p>
+      <b>#{theQuestion}</b>
     </div>
 
     <div>
-      input(class="firstOption", type="radio", name="options", id="showFirstOption", value=pickedFristOption)
-      <label for="firstOption", class="optionBox">#{option1}</label><br>
-
-      input(class="secondOption", type="radio", name="options", id="showSecondOption", value=pickedSecondOption)
-      <label for="secondOption", class="optionBox">#{option2}</label><br>
+      input(class="radioButton", type="radio", name="options", id="showFirstOption", value=pickedFristOption)
+      <label for="showFirstOption", class="optionBox">#{option1}</label><br>
     </div>
-    input(id="skipButton", type="submit", value="Skip")
-    input(class="submitButton", type="submit", value="Submit")
+    <div>
+      input(class="radioButton", type="radio", name="options", id="showSecondOption", value=pickedSecondOption)
+      <label for="showSecondOption", class="optionBox">#{option2}</label><br>
+    </div>
+    <div class="centerButtons">
+      input(class="button", id="skip", type="submit", value="Skip")
+      input(class="submitButton", id ="main", type="submit", value="Submit")
+    </div>
   </form>
   

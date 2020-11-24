@@ -107,6 +107,28 @@ header {
   }
 }
 
+/* The skip/cancel and submit button stack*/
+@media screen and (max-width: 700px) {
+
+  .centerButtons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #main.submitButton {
+    clear: both;
+  }
+
+  #skip.button {
+    clear: both;
+  }
+
+  #cancel.button {
+    clear: both;
+  }
+}
+
 .title {
   flex: 1;
   text-align: left;
@@ -140,6 +162,12 @@ select {
   margin: 4px 21px;
 }
 
+.centerButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .submitButton {
   font-size: 24px;
   background-color: blue;
@@ -153,30 +181,18 @@ select {
   border-radius: 8px;
 }
 
-#cancelButton {
-  font-size: 24px;
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 10px 25px;
-  width: 300px;
-  height: 50px;
-  text-align: center;
-  margin: 4px 20px;
-  border-radius: 8px;
+#main.submitButton {
+  float: left;
 }
 
-#skipButton {
-  font-size: 24px;
+#cancel.button {
   background-color: red;
-  border: none;
-  color: white;
-  padding: 10px 25px;
-  width: 300px;
-  height: 50px;
-  text-align: center;
-  margin: 4px 20px;
-  border-radius: 8px;
+  float: left;
+}
+
+#skip.button {
+  background-color: red;
+  float: left;
 }
 
 form input {
@@ -222,10 +238,15 @@ h3 {
 
 label.optionBox {
   display: inline-block;
-  margin: 5px auto;
+  padding: 5px;
+  margin: 5px auto 5px;
+  border: 1px solid black;
   width: 90%;
-  justify-content: center;
-  align-items: center;
+}
+
+.radioButton {
+  display: inline-block;
+  margin: auto 10px;
 }
 
 #display.questionBox {
@@ -237,14 +258,6 @@ label.optionBox {
   border: 1px solid black;
   justify-content: center;
   align-items: center;
-}
-
-.optionBox {
-  display: inline-block;
-  padding: 10px;
-  margin: 5px auto 5px;
-  border: 1px solid black;
-  width: 80%;
 }
 
 .graphWrapper {
