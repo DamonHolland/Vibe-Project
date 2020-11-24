@@ -192,20 +192,40 @@ h3 {
 }
 
 #questionBox.questionBox {
+  display: block;
+  margin: 5px auto;
   width: 90%;
   height: 200px;
   border: 1px solid black;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #firstOption {
+  display: block;
+  margin: 5px auto;
   width: 90%;
   border: 1px solid black;
+  justify-content: center;
+  align-items: center;
 }
 
 #secondOption {
+  display: block;
+  margin: 5px auto;
   width: 90%;
   border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+}
+
+label.optionBox {
+  display: inline-block;
+  margin: 5px auto;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
 }
 
 #display.questionBox {
@@ -217,7 +237,6 @@ h3 {
   border: 1px solid black;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .optionBox {
