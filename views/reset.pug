@@ -16,7 +16,7 @@ block content
       input(class=answerField, type="text", name="securityanswer", id="securityanswer", placeholder="Answer")
     </div>
     <div>
-      <p>Password:</p>
+      <p>New Password:</p>
       input(class=passField, type="password", name="password", id="password", placeholder="Password")
     </div>
     <div>
@@ -25,4 +25,6 @@ block content
     </div>
     pre=errorbox
     <input class="button" type="submit" value="Recover">
+    <br>
+    <button class="button" type="button" onclick="location.href='/login'">Cancel</button>
   </form>

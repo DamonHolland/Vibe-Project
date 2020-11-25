@@ -65,11 +65,11 @@ router.post('/', function(req, res, next) {
   });
 });
 
-
 /* Validate recovery */
 router.post('/reset', function(req, res, next) {
   const ERROR_SECURITY = "Incorrect security answer.";
   const NO_ERRORS = "";
+  const HASHING_ROUNDS = 5;
   User.findOne({username: req.session.username}, function(err, user) {
     if (err) {
       console.log(err);
@@ -82,7 +82,22 @@ router.post('/reset', function(req, res, next) {
         else if (result){
           let errorMessage = register.validatePassword(req.body.password, req.body.passwordconfirm);
           if (NO_ERRORS == errorMessage) {
-            //Change Pass
+            encryptor.hash(req.body.password, HASHING_ROUNDS, function (err, hashPass){
+              if (err) {
+                console.log(err);
+              }
+              else {
+                user.password = hashPass;
+                user.save(function(error) {
+                  if(error) {
+                   console.log(error);
+                  }
+                  else {
+                    res.redirect('/login');
+                  }
+                });
+              }
+            });
           }
           else {
             res.render('reset', {
