@@ -8,26 +8,17 @@ block content
       <b>#{theQuestion}</b>
     </div>
 
-<<<<<<< HEAD
     <div class="optionBoxes">
-      input(class="radioButton", type="radio", name="options", id="showFirstOption", value=pickedFristOption)
+      input(class="radioButton", type="radio", name="options", id="showFirstOption", value=1)
       <label for="showFirstOption", class="optionBox">#{option1}</label><br>
     </div>
     <div class="optionBoxes">
-      input(class="radioButton", type="radio", name="options", id="showSecondOption", value=pickedSecondOption)
+      input(class="radioButton", type="radio", name="options", id="showSecondOption", value=2)
       <label for="showSecondOption", class="optionBox">#{option2}</label><br>
     </div>
     <div class="centerButtons">
       input(class="button", id="skip", type="submit", value="Skip")
       input(class="button", id ="submit", type="submit", value="Submit")
-=======
-    <div>
-      input(class="firstOption", type="radio", name="options", id="showFirstOption", value=1)
-      <label for="firstOption", class="optionBox">#{option1}</label><br>
-
-      input(class="secondOption", type="radio", name="options", id="showSecondOption", value=2)
-      <label for="secondOption", class="optionBox">#{option2}</label><br>
->>>>>>> 2b2b1fdb0b309a005e3b60390605b0b6a283ae55
     </div>
     input(id="skipButton", type="submit", name="buttons", value="Skip")
     input(class="submitButton", type="submit", name="buttons", value="Submit")
