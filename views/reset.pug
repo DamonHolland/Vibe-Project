@@ -1,0 +1,28 @@
+extends layoutNoHamburger
+
+block content
+
+  h3=title
+  <form method="POST">
+    <div>
+      <label for="question">Answer Security Question</label><br>
+      <select id="question", name="question">
+        option(value="0" disabled=zeroDisabled) What is your mother's maiden name?
+        option(value="1" disabled=oneDisabled) What is the name of your first pet?
+        option(value="2" disabled=twoDisabled) What was your first car?
+        option(value="3" disabled=threeDisabled) What elementary school did you attend?
+      </select>
+      <br>
+      input(class=answerField, type="text", name="securityanswer", id="securityanswer", placeholder="Answer")
+    </div>
+    <div>
+      <p>Password:</p>
+      input(class=passField, type="password", name="password", id="password", placeholder="Password")
+    </div>
+    <div>
+      <p>Confirm Password:</p>
+      input(class=passField, type="password", name="passwordconfirm", id="passwordconfirm", placeholder="Password")
+    </div>
+    pre=errorbox
+    <input class="button" type="submit" value="Recover">
+  </form>
