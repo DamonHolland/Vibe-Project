@@ -51,6 +51,7 @@ router.post('/', function(req, res, next) {
       console.log(err);
     }
     else {
+      console.log(req.body.thumbs1);
       question.voteCount = Number(question.voteCount) + Number(req.body.thumbs);
       question.save(function(error) {
         if(error) {
