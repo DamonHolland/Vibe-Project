@@ -16,22 +16,19 @@ router.get('/', function(req, res, next) {
 
 /* Submit Question */
 router.post('/', function(req, res, next) {
+  if(!(req.body.questionBox && req.body.firstOption && req.body.secondOption))
+  {
+    res.redirect('/addQuestion');
+  }
+  else {
+    Question.create({
+      theQuestion: req.body.questionBox,
+      option1: req.body.firstOption,
+      option2: req.body.secondOption,
+      author: req.session.user._id
+    });
+  }
 
-  let questionBox = req.body.questionBox;
-  let firstOption = req.body.firstOption;
-  let secondOption = req.body.secondOption;
-
-  User.findOne({username: req.session.user.username}, function(err, user) {
-    if (err) {
-      console.log (err);
-    }
-    else if (!user) {
-      res.redirect('/login')
-    }
-    else {
-      Question.insertMany({theQuestion: questionBox, option1: firstOption, option2: secondOption, author: user._id})
-    }
-  });
   res.redirect('/');
 
 });

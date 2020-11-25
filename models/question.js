@@ -9,7 +9,7 @@ var QuestionSchema = new Schema(
     theQuestion: {type: String, required: true},
     option1: {type: String, required: true},
     option2: {type: String, required: true},
-    author: {type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true}
+    author: {type: Schema.Types.ObjectId, ref: 'User', required: true}
   }
 );
 
