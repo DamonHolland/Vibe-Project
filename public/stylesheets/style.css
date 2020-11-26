@@ -1,23 +1,59 @@
+@font-face {
+  font-family: 'pebblebold';
+  src: url('../fonts/Pebble-Bold.otf');
+}
+
+@font-face {
+  font-family: 'viro';
+  src: url('../fonts/Viro.otf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: black;
+  color: whitesmoke;
+}
+
 body {
+  text-align: center;
   padding: 0px;
   margin: 0px;
-  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 24px 'viro', Impact, 'Arial Narrow Bold', sans-serif;;
+}
+
+#background {
+  background-image: url(../img/underwater_dark.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Screen too small for gif */
+@media screen and (max-width: 345px) {
+  #backgroud {
+    background-image: url(../img/underwater.jpg);
+  }
 }
 
 a {
-  color: #00B7FF;
+  color: whitesmoke;
 }
+
 .recover {
-  color: #00B7FF;
   margin: 5px 20px;
   font-size: medium;
 }
-
-p {
-  margin: 5px 20px;
+.rememberme label {
+  text-align: left;
 }
 
-label {
+p {
   margin: 5px 20px;
 }
 
@@ -37,15 +73,16 @@ header {
   display: flex;
   padding: 10px;
   margin: 0px;
-  background-color: #55e7a8;
+  background-color: none;
 }
+
 .menu {
   text-align: right;
   overflow: hidden;
 }
 
 .menu a {
-  color: grey;
+  color:grey;
   float: right;
   text-align: center;
   text-decoration: none;
@@ -55,10 +92,11 @@ header {
 
 .menu a:hover {
   color: white;
+  cursor: pointer;
 }
 
 .menu a.current {
-  color: black;
+  color:rgb(255, 57, 179);
 }
 
 .menu #hamburger {
@@ -68,7 +106,7 @@ header {
 #hamburger1, #hamburger2, #hamburger3 {
   width: 35px;
   height: 5px;
-  background-color: black;
+  background-color: white;
   margin: 6px 0;
   transition: 0.4s;
 }
@@ -138,12 +176,15 @@ header {
   flex: 1;
   text-align: left;
   padding-top: 2px;
+  font-family: 'pebblebold';
+  font-size: 42px;
+  color: rgb(255, 57, 179);
 }
 
 .button {
   font-size: 24px;
-  background-color: grey;
-  border: none;
+  background-color: #121212;
+  border-color: white;
   color: white;
   padding: 10px 25px;
   width: 300px;
@@ -151,10 +192,11 @@ header {
   text-align: center;
   margin: 4px 20px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: #55e7a8;
+  background-color: #0044d5;
 }
 
 label {
