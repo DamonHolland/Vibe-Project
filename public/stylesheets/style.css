@@ -177,6 +177,8 @@ header {
   text-align: left;
   padding-top: 2px;
   font-family: 'pebblebold';
+  font-size: 42px;
+  color: rgb(255, 57, 179);
 }
 
 .button {
