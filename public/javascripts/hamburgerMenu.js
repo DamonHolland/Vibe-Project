@@ -1,4 +1,4 @@
-function clickedHamburger (container) {
+function onClickHamburger (container) {
   container.classList.toggle('select');
   showMenu();
 }
