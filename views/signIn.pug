@@ -2,11 +2,12 @@ extends layoutNoHamburger
 
 block content
   <div>
-    <h3>What came first, the chicken or the egg?</h3>
-    <h3>Is the glass half full or half empty?</h3>
-    <h3>Which are better, cats or dogs?</h3>
-    <h4>Get your dilemmas answered. Share your opinions. Get the vibe of the public on major issues.</h4>
+    <h4>With Vibe you can put your finger on the pulse of the public's opinion on issues you care about. Get your dilemmas answered. Finally settle the argument. Share your opinions. </h4>
+    <h3 id='typeQuestions'></h3>
   </div>
+  <br>
+  <hr>
+  <br>
   <div>
     h3=title
     <form method="POST">
@@ -27,9 +28,10 @@ block content
       <input class="button" type="submit" value="Sign In">
       <br>
       <div>
-      <a class="recover" href='/recover'>Forgot Password?</a>
-    </div>
-  </form>
-  <br>
+        <a class="recover" href='/recover'>Forgot Password?</a>
+      </div>
+    </form>
+    <br>
     <input class="button" onclick="location.href='/register'" type="submit" value="Sign Up">
   </div>
+  script(src='/javascripts/typingQuestions.js')
