@@ -5,8 +5,7 @@
   function typeChar () {
     if (index < message.length) {
       document.getElementById('typeQuestions').innerHTML += message.charAt(index++);
-      console.log("yo");
-      setTimeout(typeChar, 50);
+      setTimeout(typeChar, 75);
     }
   }
   typeChar();
