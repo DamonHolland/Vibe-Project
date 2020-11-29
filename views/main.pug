@@ -3,6 +3,7 @@ extends layout
 block content
   h3=title
   meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
   <form method="POST">
     <div class="questionBox" id="display">
       <b>#{theQuestion}</b>
@@ -16,8 +17,12 @@ block content
       input(class="radioButton", type="radio", name="options", id="showSecondOption", value=2)
       <label for="showSecondOption", class="optionBox">#{option2}</label><br>
     </div>
+    <div class="optionBoxes">
+      input(class="radioButton", type="radio", name="options", id="skip", value=3)
+      <label for="skip", class="optionBox">Skip</label><br>
+    </div>
     <div class="centerButtons">
-      input(class="button", id="skip", type="submit", name="buttons", value="Skip")
+      //input(class="button", id="skip", type="submit", name="buttons", value="Skip")
       input(class="button", id ="submit", type="submit", name="buttons", value="Submit")
     </div>
   </form>

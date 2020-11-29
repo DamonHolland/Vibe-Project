@@ -278,13 +278,13 @@ h3 {
 
 @keyframes gradient {
 	0% {
-		background-position: 0% 50%;
+		background-position: 0%;
 	}
 	50% {
-		background-position: 100% 50%;
+		background-position: 100%;
 	}
 	100% {
-		background-position: 0% 50%;
+		background-position: 0%;
 	}
 }
 
@@ -381,10 +381,24 @@ label.optionBox:hover {
   text-align: center;
 }
 
+input#up.thumbs {
+  font-size: 0;
+  background-image: url(../img/thumbs_up.png);
+  width: 150px;
+  height: 150px;
+}
+
+input#down.thumbs {
+  font-size: 0;
+  background-image: url(../img/thumbs_down.png);
+  width: 150px;
+  height: 150px;
+}
+
+
 .thumbs {
   padding: 10px;
-  margin: 0 auto;
-  width: 100px;
+  margin: 5px 15px;
   justify-content: center;
 }
 
