@@ -1,18 +1,16 @@
 extends layoutNoHamburger
 
 block content
-  <div>
-    <h3>Get your dilemmas answered.</h3>
-    <h3>Put your finger on the pulse of the public's opinion on issues you care about.</h3>
-    <h3>Finally settle the argument.</h3>
-    <h3>Share your opinions.</h3>
-    <h4 id='typeQuestions'></h4>
+  <div class='column-left' class='signin'>
+    <h5 class='questions' id='typeQuestion1'></h5>
+    <h5 class='questions' id='typeQuestion2'></h5>
+    <h5 class='questions' id='typeQuestion3'></h5>
+    <h4 id='hook'></h4>
   </div>
-  <br>
-  <hr>
-  <br>
-  <div>
-    h3=title
+  <div class='column-right signin'>
+    <div class='subtitle'>
+      h3=title
+    </div>
     <form method="POST">
     <div>
       <p>Username:</p>
