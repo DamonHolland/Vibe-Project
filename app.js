@@ -12,6 +12,7 @@ var updateRouter = require('./routes/update');
 var addQuestionRouter = require('./routes/addQuestion');
 var resultsRouter = require('./routes/results');
 var logoutRouter = require('./routes/logout');
+var recoverRouter = require('./routes/recover');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/update', updateRouter);
 app.use('/addQuestion', addQuestionRouter);
 app.use('/results', resultsRouter);
 app.use('/logout', logoutRouter);
+app.use('/recover', recoverRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

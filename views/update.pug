@@ -1,8 +1,9 @@
 extends layout
 
 block content
-
-  h3=title
+  <div class='subtitle'>
+      h3=title
+  </div>
   <form method="POST" id="updateForm">
     <div>
       <p>First Name:</p>
@@ -26,9 +27,11 @@ block content
     </div>
     <div>
     pre=errorbox
+    <br>
+    <div id="stackedUpdate">
+      <button class="button" id="changePassword" type="button" onclick="location.href='/update/password'">Change Password</button> <br>
+      <button class="button" id="changeSecurity" type="button" onclick="location.href='/update/security'">Change Security</button> <br>
+    </div>
     <div>
-      //Make these buttons look different
-      <button class="button" type="button" onclick="location.href='/update/password'">Change Password</button> <br>
-      <button class="button" type="button" onclick="location.href='/update/security'">Change Security</button> <br>
       <button class="button" type="button" onclick="location.href='/'">Return</button>
     </div>

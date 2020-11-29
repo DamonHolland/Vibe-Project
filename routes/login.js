@@ -17,8 +17,10 @@ router.get('/', function(req, res, next) {
 /* Handle login */
 router.post('/', function(req, res) {
   const ERROR_LOGIN = "Invalid username or password";
+  const SESSION_COOKIE_AGE = 1000 * 60 * 60 * 24 * 365;
   let username = req.body.username;
   let password = req.body.password;
+  let remember = req.body.rememberme == 'on';
 
   User.findOne({username: username}, function(err, user) {
     if (err) {
@@ -34,6 +36,9 @@ router.post('/', function(req, res) {
         }
         else if (result){
           req.session.user = user;
+          if (remember) {
+            req.session.cookie.maxAge = SESSION_COOKIE_AGE;
+          }
           res.redirect('/');
         }
         else {

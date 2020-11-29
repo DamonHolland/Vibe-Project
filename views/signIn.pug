@@ -1,9 +1,17 @@
 extends layoutNoHamburger
 
 block content
-
-  h3=title
-  <form method="POST">
+  <div class='column-left' class='signin'>
+    <h5 class='questions' id='typeQuestion1'></h5>
+    <h5 class='questions' id='typeQuestion2'></h5>
+    <h5 class='questions' id='typeQuestion3'></h5>
+    <h4 id='hook'></h4>
+  </div>
+  <div class='column-right signin'>
+    <div class='subtitle'>
+      h3=title
+    </div>
+    <form method="POST">
     <div>
       <p>Username:</p>
       <input type="text" name="username" id="username" placeholder="Username">
@@ -13,12 +21,18 @@ block content
       <input type="password" name="password" id="password" placeholder="Password">
     </div>
     <div>
-      <input type="checkbox" name="rememberme" id="rememberme" value="checked">
-      <label for="rememberme">Remember me</label>
+      <input type="checkbox" name="rememberme" id="rememberme">
+        <label for="rememberme">Remember me</label>
+        <br>
     </div>
-    pre=errorbox
-    <input class="button" type="submit" value="Sign In">
-  </form>
-  <hr>
-  <p>Don't have an account?</p>
-  <input class="button" onclick="location.href='/register'" type="submit" value="Create Account">
+      pre=errorbox
+      <input class="button" type="submit" value="Sign In">
+      <br>
+      <div>
+        <a class="recover" href='/recover'>Forgot Password?</a>
+      </div>
+    </form>
+    <br>
+    <input class="button" onclick="location.href='/register'" type="submit" value="Sign Up">
+  </div>
+  script(src='/javascripts/typingQuestions.js')
