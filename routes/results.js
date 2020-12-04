@@ -26,11 +26,12 @@ router.get('/', function(req, res, next) {
         answers.forEach(function(item) {
           if(1 == item.answer) {
             option1 += 1;
+            total += 1;
           }
-          else {
+          else if (2 == item.answer){
             option2 += 1;
+            total += 1;
           }
-          total += 1;
         });
         res.render('results', {
           option1Percent: Math.round(100 * option1 / total),
