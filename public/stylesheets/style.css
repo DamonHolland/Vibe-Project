@@ -470,4 +470,5 @@ input#down.thumbs {
   padding: 10px;
   margin: 5px 15px;
   justify-content: center;
+  background: transparent;
 }
