@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "start http://localhost:3000 & nodemon ./bin/www"
+    "start": "npm run open & nodemon ./bin/www",
+    "startlocal": "npm-run-all -p -r startdb start",
+    "open": "start http://localhost:3000",
+    "startdb": "mongod --port 27017"
   },
   "dependencies": {
     "async": "^3.2.0",
@@ -17,6 +20,7 @@
     "mongoose": "^5.10.14",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5",
     "pug": "^3.0.0"
   }
 }

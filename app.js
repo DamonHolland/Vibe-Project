@@ -18,7 +18,20 @@ var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
+
+//******************************************************************************
+//INSTRUCTIONS FOR RUNNING LOCAL DATABASE
+
+//If Running on the cloud, keep this line below, else comment it out
 var mongoDB = 'mongodb+srv://VibeAdmin:vBh24T76GHlTomHG@cluster0.qrok4.mongodb.net/vibe';
+
+//If Running locally, uncomment this portion below
+//var mongoDB = 'mongodb://127.0.0.1:27017/LocalDatabase';
+
+//******************************************************************************
+
+
+
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
